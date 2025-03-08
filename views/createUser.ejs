@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create a user</title>
+</head>
+<body>
+  <h1><%= title %></h1>
+  <%- include("partials/errors.ejs") %>
+  <form action="/create" method="post">
+    <label for="firstName">First Name: </label>
+    <input type="text" name="firstName" id="firstName" required>
+    <label for="lastName">Last Name: </label>
+    <input type="text" name="lastName" id="lastName" required>
+    <label for="userEmail">Email: </label>
+    <input type="email" name="userEmail" id="userEmail" required>
+    <label for="age">Age (optional): </label>
+    <input type="number" name="age" id="age" min="18" max="120">
+    <label for="bio">Bio (optional): </label>
+    <input type="textarea" name="bio" id="bio" maxlength="200">
+    <button type="submit">Submit</button>
+  </form>
+  <a href="/">Back to home</a>
+</body>
+</html>

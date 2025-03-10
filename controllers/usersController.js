@@ -82,3 +82,25 @@ exports.usersDeletePost = (req, res) => {
   usersStorage.deleteUser(req.params.id);
   res.redirect('/');
 }
+
+exports.searchUsers = (req, res) => {
+  const existingUsers = usersStorage.getUsers();
+  const { userSearchInput } = req.query;
+  const matches = [];
+
+  for (let i = 0; i < existingUsers.length; i++) {
+    if (existingUsers[i].firstName.includes(userSearchInput)) {
+      matches.push(existingUsers[i]);
+    } else if (existingUsers[i].lastName.includes(userSearchInput)) {
+      matches.push(existingUsers[i]);
+    } else if (existingUsers[i].userEmail.includes(userSearchInput)) {
+      matches.push(existingUsers[i]);
+    } else {
+      continue;
+    }
+  }
+
+  res.render("searchResults", {
+    results: matches,
+  })
+};
